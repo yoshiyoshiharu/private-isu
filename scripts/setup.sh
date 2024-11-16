@@ -8,7 +8,7 @@ GIT_REPOSITORY_DIR="$HOME"
 
 # authorized_keysにgithubに登録しているssh公開鍵を登録する
 for user in ${USERS[@]}; do
-  echo $(curl -fs "https://github.com/${user}.keys") >> ~/.ssh/authorized_keys
+  curl -fs "https://github.com/${user}.keys" >> ~/.ssh/authorized_keys
 done
 echo "authorized_keysにGithubのSSH公開鍵を登録しました"
 

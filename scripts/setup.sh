@@ -143,7 +143,7 @@ WHOAMI="isucon"
 
 mkdir -p ${GIT_REPOSITORY_DIR}/etc
 
-sudo chown -R ${WHOAMI}:${WHOAMI} /etc
+sudo chown -R ${WHOAMI}:${WHOAMI} /etc/nginx /etc/mysql
 cp -r ${NGINX_CONF_DIR} ${GIT_REPOSITORY_DIR}/etc
 cp -r ${MYSQL_CONF_DIR} ${GIT_REPOSITORY_DIR}/etc
 echo "done: ミドルウェアの設定ファイルをホームディレクトリにコピーしました"

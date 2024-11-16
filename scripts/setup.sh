@@ -125,12 +125,8 @@ cat <<EOF > ~/.bashrc
   alias la='ls -laG'
 
   alias g='git'
-  if [ "$color_prompt" = yes ]; then
-    PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]$(__git_ps1) \$ '
-  else
-    PS1='${debian_chroot:+($debian_chroot)}\u@\h:\w$(__git_ps1) \$ '
-  fi
 EOF
+echo "bashrcの設定を追加しました"
 
 
 # authorized_keysにgithubに登録しているssh公開鍵を登録する

@@ -3,6 +3,7 @@ require 'mysql2'
 require 'rack-flash'
 require 'shellwords'
 require 'rack/session/dalli'
+require 'stackprof'
 
 module Isuconp
   class App < Sinatra::Base

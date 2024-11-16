@@ -2,18 +2,24 @@
 set -ex
 
 # 環境変数
-mysql_slow_log="/var/log/mysql/mysql-slow.log"
-nginx_access_log="/var/log/nginx/access.log"
-app_prof="$HOME/webapp/measure/ruby/stackprof.dump"
-systemctl_app="isuports.service"
+GIT_REPOSITORY_DIR="$HOME"
+
+MYSQL_SLOW_LOG="/var/log/mysql/mysql-slow.log"
+NGINX_ACCESS_LOG="/var/log/nginx/access.log"
+APP_PROF="$HOME/webapp/measure/ruby/stackprof.dump"
+SYSTEMCTL_APP="isuports.service"
 
 # 最新状態にする
 git pull
 
+# ホームディレクトリのgit管理用のetcディレクトリにある設定ファイルをetcディレクトリにコピー
+cp -r ${GIT_REPOSITORY_DIR}/etc/nginx/* /etc/nginx
+cp -r ${GIT_REPOSITORY_DIR}/etc/mysql/* /etc/mysql
+
 # ログをクリア
-sudo truncate -s 0 "${mysql_slow_log}"
-sudo truncate -s 0 "${nginx_access_log}"
-sudo truncate -s 0 "${app_prof}"
+sudo truncate -s 0 "${MYSQL_SLOW_LOG}"
+sudo truncate -s 0 "${NGINX_ACCESS_LOG}"
+sudo truncate -s 0 "${APP_PROF}"
 
 # サービスの再起動
 sudo systemctl restart nginx

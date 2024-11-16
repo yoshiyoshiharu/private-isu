@@ -2,12 +2,12 @@
 set -ex
 
 # 環境変数
-GIT_REPOSITORY_DIR="$HOME"
+GIT_REPOSITORY_DIR="$HOME/private-isu/webapp"
+SYSTEMCTL_APP="isuports.service"
 
 MYSQL_SLOW_LOG="/var/log/mysql/mysql-slow.log"
 NGINX_ACCESS_LOG="/var/log/nginx/access.log"
-APP_PROF="$HOME/webapp/measure/ruby/stackprof.dump"
-SYSTEMCTL_APP="isuports.service"
+APP_PROF="$GIT_REPOSITORY_DIR/measure/ruby/stackprof.dump"
 
 # 最新状態にする
 git pull
@@ -25,6 +25,6 @@ sudo truncate -s 0 "${APP_PROF}"
 sudo systemctl restart nginx
 sudo systemctl restart mysql
 sudo systemctl daemon-reload
-sudo systemctl restart isuports.service
+sudo systemctl restart ${SYSTEMCTL_APP}
 
 echo "MySQLとNginxのログクリアおよびサービスの再起動が完了しました"

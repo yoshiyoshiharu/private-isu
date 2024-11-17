@@ -10,6 +10,7 @@ module Isuconp
     use Rack::Session::Dalli, autofix_keys: true, secret: ENV['ISUCONP_SESSION_SECRET'] || 'sendagaya', memcache_server: ENV['ISUCONP_MEMCACHED_ADDRESS'] || 'localhost:11211'
     use Rack::Flash
     set :public_folder, File.expand_path('../../public', __FILE__)
+    enable :logging
 
     UPLOAD_LIMIT = 10 * 1024 * 1024 # 10mb
 

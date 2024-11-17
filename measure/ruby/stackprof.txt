@@ -1,36 +1,36 @@
 ==================================
   Mode: cpu(1000)
-  Samples: 3378 (0.59% miss rate)
-  GC: 270 (7.99%)
+  Samples: 3075 (0.68% miss rate)
+  GC: 263 (8.55%)
 ==================================
      TOTAL    (pct)     SAMPLES    (pct)     FRAME
-       961  (28.4%)         957  (28.3%)     Time.local
-      1680  (49.7%)         688  (20.4%)     Mysql2::Result#each
-       522  (15.5%)         169   (5.0%)     Enumerable#find
-       157   (4.6%)         157   (4.6%)     (sweeping)
-       146   (4.3%)         146   (4.3%)     block (3 levels) in <class:App>
-      1089  (32.2%)         125   (3.7%)     Isuconp::App#make_posts
-       156   (4.6%)         118   (3.5%)     Mysql2::Statement#_execute
-       113   (3.3%)         113   (3.3%)     (marking)
-      2919  (86.4%)          94   (2.8%)     Array#each
-        71   (2.1%)          71   (2.1%)     Mysql2::Client#prepare
-        51   (1.5%)          51   (1.5%)     Mysql2::Client#_query
-        38   (1.1%)          38   (1.1%)     IO#write
-        32   (0.9%)          32   (0.9%)     Time#strftime
-      1639  (48.5%)          30   (0.9%)     Enumerable#to_a
-        27   (0.8%)          27   (0.8%)     Kernel#`
-       317   (9.4%)          22   (0.7%)     Sinatra::Templates#render
-        21   (0.6%)          21   (0.6%)     File.expand_path
-        49   (1.5%)          18   (0.5%)     Tilt::CompiledTemplates#__tilt_2600
-        15   (0.4%)          15   (0.4%)     Rack::Utils#html_escape
-        34   (1.0%)          13   (0.4%)     Hash#fetch
-       278   (8.2%)          12   (0.4%)     UnboundMethod#bind_call
-        11   (0.3%)          11   (0.3%)     File.dirname
-       222   (6.6%)          10   (0.3%)     Thread.handle_interrupt
-        14   (0.4%)          10   (0.3%)     Array#eql?
-         9   (0.3%)           9   (0.3%)     String#gsub
-        10   (0.3%)           8   (0.2%)     Sinatra::Helpers#content_type
-        10   (0.3%)           8   (0.2%)     Array#hash
-        19   (0.6%)           8   (0.2%)     Tilt::Template#compiled_method
-        20   (0.6%)           8   (0.2%)     Thread::Mutex#synchronize
-        39   (1.2%)           7   (0.2%)     Time#xmlschema
+       899  (29.2%)         896  (29.1%)     Time.local
+      1562  (50.8%)         635  (20.7%)     Mysql2::Result#each
+       473  (15.4%)         176   (5.7%)     Enumerable#find
+       144   (4.7%)         144   (4.7%)     (sweeping)
+       122   (4.0%)         122   (4.0%)     block (3 levels) in <class:App>
+       119   (3.9%)         119   (3.9%)     (marking)
+       875  (28.5%)          93   (3.0%)     Isuconp::App#make_posts
+      2605  (84.7%)          89   (2.9%)     Array#each
+       102   (3.3%)          70   (2.3%)     Mysql2::Statement#_execute
+        38   (1.2%)          38   (1.2%)     IO#write
+        33   (1.1%)          33   (1.1%)     Mysql2::Client#_query
+        32   (1.0%)          32   (1.0%)     Time#strftime
+        31   (1.0%)          31   (1.0%)     Mysql2::Client#prepare
+      1524  (49.6%)          29   (0.9%)     Enumerable#to_a
+        19   (0.6%)          19   (0.6%)     File.expand_path
+        49   (1.6%)          13   (0.4%)     Tilt::CompiledTemplates#__tilt_2340
+        35   (1.1%)          13   (0.4%)     Tilt::CompiledTemplates#__tilt_2600
+        11   (0.4%)          11   (0.4%)     Kernel#`
+       305   (9.9%)          10   (0.3%)     Sinatra::Templates#render
+         9   (0.3%)           9   (0.3%)     File.dirname
+         8   (0.3%)           8   (0.3%)     String#gsub
+        27   (0.9%)           8   (0.3%)     Thread::Mutex#synchronize
+        22   (0.7%)           8   (0.3%)     Hash#fetch
+        22   (0.7%)           7   (0.2%)     Tilt::Template#compiled_method
+         7   (0.2%)           7   (0.2%)     Marshal.dump
+        39   (1.3%)           7   (0.2%)     Time#xmlschema
+         9   (0.3%)           7   (0.2%)     Array#eql?
+        71   (2.3%)           7   (0.2%)     Dalli::Protocol::Binary#storage_req
+        17   (0.6%)           7   (0.2%)     Tilt::BaseMapping#split
+      2650  (86.2%)           6   (0.2%)     Sinatra::Base#invoke

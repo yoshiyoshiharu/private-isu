@@ -349,7 +349,7 @@ module Isuconp
         pid = db.last_id
 
         file_type = mime.delete_prefix("image/")
-        File.open("../img/#{pid}.#{file_type}", mode="w") do |f|
+        File.open("../image/#{pid}.#{file_type}", mode="w") do |f|
           f.write(params['file'][:tempfile].read)
         end
 

@@ -102,6 +102,7 @@ module Isuconp
 
       def make_posts(results, all_comments: false)
         posts = []
+        all_users = db.query('SELECT * FROM `users`').to_a
         results.to_a.each do |post|
           post[:comment_count] = db.prepare('SELECT COUNT(*) AS `count` FROM `comments` WHERE `post_id` = ?').execute(
             post[:id]
@@ -115,15 +116,11 @@ module Isuconp
             post[:id]
           ).to_a
           comments.each do |comment|
-            comment[:user] = db.prepare('SELECT * FROM `users` WHERE `id` = ?').execute(
-              comment[:user_id]
-            ).first
+            comment[:user] = all_users.find { |user| user[:id] == comment[:user_id] }
           end
           post[:comments] = comments.reverse
 
-          post[:user] = db.prepare('SELECT * FROM `users` WHERE `id` = ?').execute(
-            post[:user_id]
-          ).first
+          post[:user] = all_users.find { |user| user[:id] == post[:user_id] }
 
           posts.push(post) if post[:user][:del_flg] == 0
           break if posts.length >= POSTS_PER_PAGE

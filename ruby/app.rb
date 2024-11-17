@@ -227,28 +227,36 @@ module Isuconp
       me = get_session_user()
 
       results = db.query('SELECT `id`, `user_id`, `body`, `created_at`, `mime` FROM `posts` ORDER BY `created_at` DESC')
+
       post_ids = results.map{ |post| post[:id] }
+      post_user_ids = results.map { |post| post[:user_id] }
+
+      comments_results = db.query("SELECT * FROM `comments` WHERE `post_id` IN (#{post_ids.join(',')}) ORDER BY `created_at` DESC")
+      comment_user_ids = comments_results.map { |comment| comment[:user_id] }
+
+      all_users = db.query("SELECT * FROM `users` WHERE `id` IN (#{(post_user_ids + comment_user_ids).uniq.join(',')})")
+      users_by_id = all_users.to_a.index_by { |user| user[:id] }
+
       post_id_comment_count_hash = db.prepare('SELECT `post_id`, COUNT(*) AS `count` FROM `comments` WHERE `post_id` IN (?) GROUP BY `post_id`').execute(
         post_ids
       ).map{ |row| [row[:post_id], row[:count]] }.to_h
 
       posts = []
       results.to_a.each do |post|
+        # 投稿ごとのコメント数を取得
         post[:comment_count] = post_id_comment_count_hash[post[:id]] || 0
-        query = 'SELECT * FROM `comments` WHERE `post_id` = ? ORDER BY `created_at` DESC LIMIT 3'
-        comments = db.prepare(query).execute(
-          post[:id]
-        ).to_a
+
+        # 最新3件のコメントを取得
+        comments = comments_results.select { |comment| comment[:post_id] == post[:id] }.first(3)
+
+        # コメントのユーザ情報を取得
         comments.each do |comment|
-          comment[:user] = db.prepare('SELECT * FROM `users` WHERE `id` = ?').execute(
-            comment[:user_id]
-          ).first
+          comment[:user] = users_by_id[comment[:user_id]]
         end
         post[:comments] = comments.reverse
 
-        post[:user] = db.prepare('SELECT * FROM `users` WHERE `id` = ?').execute(
-          post[:user_id]
-        ).first
+        # 投稿のユーザ情報を取得
+        post[:user] = users_by_id[post[:user_id]]
 
         posts.push(post) if post[:user][:del_flg] == 0
         break if posts.length >= POSTS_PER_PAGE

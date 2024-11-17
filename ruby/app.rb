@@ -226,37 +226,31 @@ module Isuconp
     get '/' do
       me = get_session_user()
 
-      # 1. 必要なデータを一括取得
-      post_results = db.query('SELECT `id`, `user_id`, `body`, `created_at`, `mime` FROM `posts` ORDER BY `created_at` DESC')
+      results = db.query('SELECT `id`, `user_id`, `body`, `created_at`, `mime` FROM `posts` ORDER BY `created_at` DESC')
+      post_ids = results.map{ |post| post[:id] }
+      post_id_comment_count_hash = db.prepare('SELECT `post_id`, COUNT(*) AS `count` FROM `comments` WHERE `post_id` IN (?) GROUP BY `post_id`').execute(
+        post_ids
+      ).map{ |row| [row[:post_id], row[:count]] }.to_h
 
-      post_ids = post_results.map { |post| post[:id] }
-      user_ids = post_results.map { |post| post[:user_id] }
-
-      # コメントとユーザーを一括取得
-      comments_results = db.query("SELECT * FROM `comments` WHERE `post_id` IN (#{post_ids.join(',')}) ORDER BY `created_at` DESC")
-      comment_user_ids = comments_results.map { |comment| comment[:user_id] }
-
-      all_users = db.query("SELECT * FROM `users` WHERE `id` IN (#{(user_ids + comment_user_ids).uniq.join(',')})")
-      users_by_id = all_users.to_a.index_by { |user| user[:id] }
-
-      # コメントのカウントを取得
-      comment_counts = db.query("SELECT `post_id`, COUNT(*) AS `count` FROM `comments` WHERE `post_id` IN (#{post_ids.join(',')}) GROUP BY `post_id`")
-      comment_counts_by_post_id = comment_counts.to_a.index_by { |row| row[:post_id] }
-
-      # 2. メモリ内でデータを構築
       posts = []
-      post_results.each do |post|
-        post[:comment_count] = comment_counts_by_post_id[post[:id]]&.[](:count) || 0
-
-        comments = comments_results.select { |comment| comment[:post_id] == post[:id] }.first(3)
+      results.to_a.each do |post|
+        post[:comment_count] = post_id_comment_count_hash[post[:id]] || 0
+        query = 'SELECT * FROM `comments` WHERE `post_id` = ? ORDER BY `created_at` DESC LIMIT 3'
+        comments = db.prepare(query).execute(
+          post[:id]
+        ).to_a
         comments.each do |comment|
-          comment[:user] = users_by_id[comment[:user_id]]
+          comment[:user] = db.prepare('SELECT * FROM `users` WHERE `id` = ?').execute(
+            comment[:user_id]
+          ).first
         end
         post[:comments] = comments.reverse
 
-        post[:user] = users_by_id[post[:user_id]]
+        post[:user] = db.prepare('SELECT * FROM `users` WHERE `id` = ?').execute(
+          post[:user_id]
+        ).first
 
-        posts.push(post) if post[:user] && post[:user][:del_flg] == 0
+        posts.push(post) if post[:user][:del_flg] == 0
         break if posts.length >= POSTS_PER_PAGE
       end
 

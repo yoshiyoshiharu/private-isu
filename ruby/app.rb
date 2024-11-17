@@ -227,7 +227,30 @@ module Isuconp
       me = get_session_user()
 
       results = db.query('SELECT `id`, `user_id`, `body`, `created_at`, `mime` FROM `posts` ORDER BY `created_at` DESC')
-      posts = make_posts(results)
+      posts = []
+      results.to_a.each do |post|
+        post[:comment_count] = db.prepare('SELECT COUNT(*) AS `count` FROM `comments` WHERE `post_id` = ?').execute(
+          post[:id]
+        ).first[:count]
+
+        query = 'SELECT * FROM `comments` WHERE `post_id` = ? ORDER BY `created_at` DESC LIMIT 3'
+        comments = db.prepare(query).execute(
+          post[:id]
+        ).to_a
+        comments.each do |comment|
+          comment[:user] = db.prepare('SELECT * FROM `users` WHERE `id` = ?').execute(
+            comment[:user_id]
+          ).first
+        end
+        post[:comments] = comments.reverse
+
+        post[:user] = db.prepare('SELECT * FROM `users` WHERE `id` = ?').execute(
+          post[:user_id]
+        ).first
+
+        posts.push(post) if post[:user][:del_flg] == 0
+        break if posts.length >= POSTS_PER_PAGE
+      end
 
       erb :index, layout: :layout, locals: { posts: posts, me: me }
     end

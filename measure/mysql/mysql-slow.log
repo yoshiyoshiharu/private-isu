@@ -1,117 +1,114 @@
-Count: 456  Time=0.02s (7s)  Lock=0.00s (0s)  Rows=10019.1 (4568705), isuconp[isuconp]@localhost
+Count: 815  Time=0.04s (33s)  Lock=0.00s (0s)  Rows=10032.9 (8176828), isuconp[isuconp]@localhost
   SELECT `id`, `user_id`, `body`, `created_at`, `mime` FROM `posts` ORDER BY `created_at` DESC
 
-Count: 320  Time=0.02s (6s)  Lock=0.00s (0s)  Rows=9895.6 (3166600), isuconp[isuconp]@localhost
+Count: 360  Time=0.05s (18s)  Lock=0.00s (0s)  Rows=9895.8 (3562480), isuconp[isuconp]@localhost
   SELECT `id`, `user_id`, `body`, `mime`, `created_at` FROM `posts` WHERE `created_at` <= 'S' ORDER BY `created_at` DESC
 
-Count: 166349  Time=0.00s (3s)  Lock=0.00s (0s)  Rows=4970.4 (826815870), isuconp[isuconp]@localhost
+Count: 237342  Time=0.00s (11s)  Lock=0.00s (0s)  Rows=4961.8 (1177650251), isuconp[isuconp]@localhost
   #
 
-Count: 48255  Time=0.00s (2s)  Lock=0.00s (0s)  Rows=1.0 (48255), isuconp[isuconp]@localhost
+Count: 64887  Time=0.00s (8s)  Lock=0.00s (0s)  Rows=1.0 (64887), isuconp[isuconp]@localhost
   SELECT * FROM `users` WHERE `id` = N
 
-Count: 16579  Time=0.00s (1s)  Lock=0.00s (0s)  Rows=1.8 (29440), isuconp[isuconp]@localhost
+Count: 25257  Time=0.00s (4s)  Lock=0.00s (0s)  Rows=1.4 (34320), isuconp[isuconp]@localhost
   SELECT * FROM `comments` WHERE `post_id` = N ORDER BY `created_at` DESC LIMIT N
 
-Count: 16756  Time=0.00s (1s)  Lock=0.00s (0s)  Rows=1.0 (16756), isuconp[isuconp]@localhost
+Count: 25692  Time=0.00s (4s)  Lock=0.00s (0s)  Rows=1.0 (25692), isuconp[isuconp]@localhost
   SELECT COUNT(*) AS `count` FROM `comments` WHERE `post_id` = N
 
-Count: 38  Time=0.02s (0s)  Lock=0.00s (0s)  Rows=0.0 (0), isuconp[isuconp]@localhost
+Count: 65  Time=0.03s (1s)  Lock=0.00s (0s)  Rows=0.0 (0), isuconp[isuconp]@localhost
   INSERT INTO `posts` (`user_id`, `mime`, `imgdata`, `body`) VALUES (N,'S','S','S')
 
-Count: 56  Time=0.01s (0s)  Lock=0.00s (0s)  Rows=0.0 (0), isuconp[isuconp]@localhost
-  INSERT INTO `comments` (`post_id`, `user_id`, `comment`) VALUES ('S',N,'S')
-
-Count: 127  Time=0.00s (0s)  Lock=0.00s (0s)  Rows=1.0 (127), isuconp[isuconp]@localhost
+Count: 276  Time=0.00s (0s)  Lock=0.00s (0s)  Rows=1.0 (276), isuconp[isuconp]@localhost
   SELECT * FROM `posts` WHERE `id` = N
 
-Count: 56  Time=0.00s (0s)  Lock=0.00s (0s)  Rows=0.0 (0), isuconp[isuconp]@localhost
+Count: 107  Time=0.00s (0s)  Lock=0.00s (0s)  Rows=0.0 (0), isuconp[isuconp]@localhost
+  INSERT INTO `comments` (`post_id`, `user_id`, `comment`) VALUES ('S',N,'S')
+
+Count: 84  Time=0.01s (0s)  Lock=0.00s (0s)  Rows=0.0 (0), isuconp[isuconp]@localhost
   INSERT INTO `users` (`account_name`, `passhash`) VALUES ('S','S')
 
-Count: 177  Time=0.00s (0s)  Lock=0.00s (0s)  Rows=1.0 (177), isuconp[isuconp]@localhost
+Count: 435  Time=0.00s (0s)  Lock=0.00s (0s)  Rows=1.0 (435), isuconp[isuconp]@localhost
   SELECT * FROM `posts` WHERE `id` = 'S'
 
-Count: 1  Time=0.05s (0s)  Lock=0.00s (0s)  Rows=0.0 (0), isuconp[isuconp]@localhost
-  DELETE FROM posts WHERE id > N
-
-Count: 293  Time=0.00s (0s)  Lock=0.00s (0s)  Rows=0.9 (258), isuconp[isuconp]@localhost
-  SELECT * FROM users WHERE account_name = 'S' AND del_flg = N
-
-Count: 177  Time=0.00s (0s)  Lock=0.00s (0s)  Rows=8.1 (1442), isuconp[isuconp]@localhost
+Count: 435  Time=0.00s (0s)  Lock=0.00s (0s)  Rows=8.7 (3793), isuconp[isuconp]@localhost
   SELECT * FROM `comments` WHERE `post_id` = N ORDER BY `created_at` DESC
 
-Count: 68  Time=0.00s (0s)  Lock=0.00s (0s)  Rows=10.1 (689), isuconp[isuconp]@localhost
+Count: 1  Time=0.11s (0s)  Lock=0.00s (0s)  Rows=0.0 (0), isuconp[isuconp]@localhost
+  DELETE FROM posts WHERE id > N
+
+Count: 552  Time=0.00s (0s)  Lock=0.00s (0s)  Rows=0.9 (475), isuconp[isuconp]@localhost
+  SELECT * FROM users WHERE account_name = 'S' AND del_flg = N
+
+Count: 136  Time=0.00s (0s)  Lock=0.00s (0s)  Rows=10.0 (1354), isuconp[isuconp]@localhost
   SELECT `id`, `user_id`, `body`, `mime`, `created_at` FROM `posts` WHERE `user_id` = N ORDER BY `created_at` DESC
 
-Count: 68  Time=0.00s (0s)  Lock=0.00s (0s)  Rows=1.0 (68), isuconp[isuconp]@localhost
-  SELECT * FROM `users` WHERE `account_name` = 'S' AND `del_flg` = N
-
-Count: 68  Time=0.00s (0s)  Lock=0.00s (0s)  Rows=1.0 (68), isuconp[isuconp]@localhost
-  SELECT COUNT(*) AS count FROM `comments` WHERE `user_id` = N
-
-Count: 56  Time=0.00s (0s)  Lock=0.00s (0s)  Rows=0.0 (0), isuconp[isuconp]@localhost
-  SELECT N FROM users WHERE `account_name` = 'S'
-
-Count: 68  Time=0.00s (0s)  Lock=0.00s (0s)  Rows=10.1 (689), isuconp[isuconp]@localhost
+Count: 136  Time=0.00s (0s)  Lock=0.00s (0s)  Rows=10.0 (1354), isuconp[isuconp]@localhost
   SELECT `id` FROM `posts` WHERE `user_id` = N
 
-Count: 1  Time=0.00s (0s)  Lock=0.00s (0s)  Rows=0.0 (0), isuconp[isuconp]@localhost
-  DELETE FROM users WHERE id > N
+Count: 136  Time=0.00s (0s)  Lock=0.00s (0s)  Rows=1.0 (136), isuconp[isuconp]@localhost
+  SELECT COUNT(*) AS count FROM `comments` WHERE `user_id` = N
 
-Count: 1  Time=0.00s (0s)  Lock=0.00s (0s)  Rows=0.0 (0), isuconp[isuconp]@localhost
+Count: 136  Time=0.00s (0s)  Lock=0.00s (0s)  Rows=1.0 (136), isuconp[isuconp]@localhost
+  SELECT * FROM `users` WHERE `account_name` = 'S' AND `del_flg` = N
+
+Count: 26  Time=0.00s (0s)  Lock=0.00s (0s)  Rows=1.0 (26), isuconp[isuconp]@localhost
+  SELECT COUNT(*) AS count FROM `comments` WHERE `post_id` IN (N,N,N,N,N,N,N,N,N,N,N)
+
+Count: 14  Time=0.00s (0s)  Lock=0.00s (0s)  Rows=1.0 (14), isuconp[isuconp]@localhost
+  SELECT COUNT(*) AS count FROM `comments` WHERE `post_id` IN (N,N,N,N,N,N)
+
+Count: 84  Time=0.00s (0s)  Lock=0.00s (0s)  Rows=0.0 (0), isuconp[isuconp]@localhost
+  SELECT N FROM users WHERE `account_name` = 'S'
+
+Count: 1  Time=0.01s (0s)  Lock=0.00s (0s)  Rows=0.0 (0), isuconp[isuconp]@localhost
+  DELETE FROM comments WHERE id > N
+
+Count: 18  Time=0.00s (0s)  Lock=0.00s (0s)  Rows=1.0 (18), isuconp[isuconp]@localhost
+  SELECT COUNT(*) AS count FROM `comments` WHERE `post_id` IN (N,N,N,N,N,N,N,N)
+
+Count: 11  Time=0.00s (0s)  Lock=0.00s (0s)  Rows=1.0 (11), isuconp[isuconp]@localhost
+  SELECT COUNT(*) AS count FROM `comments` WHERE `post_id` IN (N,N,N,N,N,N,N,N,N)
+
+Count: 15  Time=0.00s (0s)  Lock=0.00s (0s)  Rows=1.0 (15), isuconp[isuconp]@localhost
+  SELECT COUNT(*) AS count FROM `comments` WHERE `post_id` IN (N,N,N,N,N,N,N,N,N,N)
+
+Count: 13  Time=0.00s (0s)  Lock=0.00s (0s)  Rows=1.0 (13), isuconp[isuconp]@localhost
+  SELECT COUNT(*) AS count FROM `comments` WHERE `post_id` IN (N,N,N,N,N,N,N,N,N,N,N,N)
+
+Count: 1  Time=0.01s (0s)  Lock=0.00s (0s)  Rows=0.0 (0), isuconp[isuconp]@localhost
   UPDATE users SET del_flg = N
 
 Count: 1  Time=0.00s (0s)  Lock=0.00s (0s)  Rows=0.0 (0), isuconp[isuconp]@localhost
   UPDATE users SET del_flg = N WHERE id % N = N
 
 Count: 1  Time=0.00s (0s)  Lock=0.00s (0s)  Rows=0.0 (0), isuconp[isuconp]@localhost
-  DELETE FROM comments WHERE id > N
+  DELETE FROM users WHERE id > N
 
-Count: 12  Time=0.00s (0s)  Lock=0.00s (0s)  Rows=1.0 (12), isuconp[isuconp]@localhost
-  SELECT COUNT(*) AS count FROM `comments` WHERE `post_id` IN (N,N,N,N,N,N,N,N,N)
-
-Count: 11  Time=0.00s (0s)  Lock=0.00s (0s)  Rows=1.0 (11), isuconp[isuconp]@localhost
-  SELECT COUNT(*) AS count FROM `comments` WHERE `post_id` IN (N,N,N,N,N,N,N,N,N,N)
-
-Count: 7  Time=0.00s (0s)  Lock=0.00s (0s)  Rows=1.0 (7), isuconp[isuconp]@localhost
-  SELECT COUNT(*) AS count FROM `comments` WHERE `post_id` IN (N,N,N,N,N,N,N,N,N,N,N)
+Count: 13  Time=0.00s (0s)  Lock=0.00s (0s)  Rows=1.0 (13), isuconp[isuconp]@localhost
+  SELECT COUNT(*) AS count FROM `comments` WHERE `post_id` IN (N,N,N,N,N,N,N,N,N,N,N,N,N)
 
 Count: 9  Time=0.00s (0s)  Lock=0.00s (0s)  Rows=1.0 (9), isuconp[isuconp]@localhost
   SELECT COUNT(*) AS count FROM `comments` WHERE `post_id` IN (N,N,N,N,N,N,N)
 
-Count: 6  Time=0.00s (0s)  Lock=0.00s (0s)  Rows=1.0 (6), isuconp[isuconp]@localhost
-  SELECT COUNT(*) AS count FROM `comments` WHERE `post_id` IN (N,N,N,N,N,N,N,N,N,N,N,N)
-
 Count: 3  Time=0.00s (0s)  Lock=0.00s (0s)  Rows=1.0 (3), isuconp[isuconp]@localhost
-  SELECT COUNT(*) AS count FROM `comments` WHERE `post_id` IN (N,N,N,N,N,N,N,N,N,N,N,N,N,N,N,N,N)
+  SELECT COUNT(*) AS count FROM `comments` WHERE `post_id` IN (N,N,N,N,N,N,N,N,N,N,N,N,N,N,N)
 
-Count: 3  Time=0.00s (0s)  Lock=0.00s (0s)  Rows=1.0 (3), isuconp[isuconp]@localhost
+Count: 7  Time=0.00s (0s)  Lock=0.00s (0s)  Rows=1.0 (7), isuconp[isuconp]@localhost
   SELECT COUNT(*) AS count FROM `comments` WHERE `post_id` IN (N,N,N,N,N,N,N,N,N,N,N,N,N,N,N,N)
 
 Count: 3  Time=0.00s (0s)  Lock=0.00s (0s)  Rows=1.0 (3), isuconp[isuconp]@localhost
-  SELECT COUNT(*) AS count FROM `comments` WHERE `post_id` IN (N,N,N,N,N,N,N,N,N,N,N,N,N)
-
-Count: 4  Time=0.00s (0s)  Lock=0.00s (0s)  Rows=1.0 (4), isuconp[isuconp]@localhost
-  SELECT COUNT(*) AS count FROM `comments` WHERE `post_id` IN (N,N,N,N,N,N,N,N)
-
-Count: 4  Time=0.00s (0s)  Lock=0.00s (0s)  Rows=1.0 (4), isuconp[isuconp]@localhost
-  SELECT COUNT(*) AS count FROM `comments` WHERE `post_id` IN (N,N,N,N,N,N)
+  SELECT COUNT(*) AS count FROM `comments` WHERE `post_id` IN (N,N,N,N)
 
 Count: 2  Time=0.00s (0s)  Lock=0.00s (0s)  Rows=1.0 (2), isuconp[isuconp]@localhost
-  SELECT COUNT(*) AS count FROM `comments` WHERE `post_id` IN (N,N,N,N,N,N,N,N,N,N,N,N,N,N,N)
+  SELECT COUNT(*) AS count FROM `comments` WHERE `post_id` IN (N,N,N)
 
 Count: 2  Time=0.00s (0s)  Lock=0.00s (0s)  Rows=1.0 (2), isuconp[isuconp]@localhost
   SELECT COUNT(*) AS count FROM `comments` WHERE `post_id` IN (N,N,N,N,N,N,N,N,N,N,N,N,N,N)
 
-Count: 1  Time=0.00s (0s)  Lock=0.00s (0s)  Rows=1.0 (1), isuconp[isuconp]@localhost
-  SELECT COUNT(*) AS count FROM `comments` WHERE `post_id` IN (N,N,N,N)
-
-Count: 1  Time=0.00s (0s)  Lock=0.00s (0s)  Rows=1.0 (1), isuconp[isuconp]@localhost
-  SELECT COUNT(*) AS count FROM `comments` WHERE `post_id` IN (N,N,N)
-
-Count: 83235  Time=0.00s (0s)  Lock=0.00s (0s)  Rows=0.0 (0), 0users@0hosts
+Count: 118919  Time=0.00s (0s)  Lock=0.00s (0s)  Rows=0.0 (0), 0users@0hosts
   administrator command: Prepare
 
-Count: 83114  Time=0.00s (0s)  Lock=0.00s (0s)  Rows=0.0 (0), 0users@0hosts
+Count: 118423  Time=0.00s (0s)  Lock=0.00s (0s)  Rows=0.0 (0), 0users@0hosts
   administrator command: Close stmt
 

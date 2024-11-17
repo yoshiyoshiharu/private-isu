@@ -350,7 +350,7 @@ module Isuconp
 
         file_type = mime.delete_prefix("image/")
         File.open("../img/#{pid}.#{file_type}", mode="w") do |f|
-          f.write(image)
+          f.write(params['file'][:tempfile].read)
         end
 
         redirect "/posts/#{pid}", 302

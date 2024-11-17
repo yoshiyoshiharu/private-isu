@@ -3,6 +3,7 @@ require 'mysql2'
 require 'rack-flash'
 require 'shellwords'
 require 'rack/session/dalli'
+require 'stackprof'
 
 module Isuconp
   class App < Sinatra::Base
@@ -13,6 +14,21 @@ module Isuconp
     UPLOAD_LIMIT = 10 * 1024 * 1024 # 10mb
 
     POSTS_PER_PAGE = 20
+
+    before do
+      StackProf.start(
+       enabled: true,
+       mode: :cpu,
+       raw: true,
+       interval: 1000,
+       save_every: 5
+      )
+    end
+
+    after do
+      StackProf.stop
+      StackProf.results("../measure/ruby/stackprof.dump")
+    end
 
     helpers do
       def config

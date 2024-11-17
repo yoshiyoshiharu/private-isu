@@ -32,6 +32,7 @@ GEM
       rack-protection (= 4.0.0)
       sinatra (= 4.0.0)
       tilt (~> 2.0)
+    stackprof (0.2.26)
     tilt (2.3.0)
     unicorn (6.1.0)
       kgio (~> 2.6)
@@ -50,6 +51,7 @@ DEPENDENCIES
   rack-flash3
   sinatra
   sinatra-contrib
+  stackprof
   unicorn
 
 BUNDLED WITH

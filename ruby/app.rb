@@ -3,16 +3,33 @@ require 'mysql2'
 require 'rack-flash'
 require 'shellwords'
 require 'rack/session/dalli'
+require 'stackprof'
 
 module Isuconp
   class App < Sinatra::Base
     use Rack::Session::Dalli, autofix_keys: true, secret: ENV['ISUCONP_SESSION_SECRET'] || 'sendagaya', memcache_server: ENV['ISUCONP_MEMCACHED_ADDRESS'] || 'localhost:11211'
     use Rack::Flash
     set :public_folder, File.expand_path('../../public', __FILE__)
+    enable :logging
 
     UPLOAD_LIMIT = 10 * 1024 * 1024 # 10mb
 
     POSTS_PER_PAGE = 20
+
+    before do
+      StackProf.start(
+       enabled: true,
+       mode: :cpu,
+       raw: true,
+       interval: 1000,
+       save_every: 5
+      )
+    end
+
+    after do
+      StackProf.stop
+      StackProf.results("../measure/ruby/stackprof.dump")
+    end
 
     helpers do
       def config

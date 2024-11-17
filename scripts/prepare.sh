@@ -18,7 +18,7 @@ cp -r ${GIT_REPOSITORY_DIR}/etc/mysql/* /etc/mysql
 # ログをクリア
 sudo truncate -s 0 "${MYSQL_SLOW_LOG}"
 sudo truncate -s 0 "${NGINX_ACCESS_LOG}"
-if [ -d ${APP_HOME} ]; then
+if [ -d ${APP_PROF} ]; then
   rm -r ${APP_PROF}
 fi
 

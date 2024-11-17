@@ -349,9 +349,7 @@ module Isuconp
         pid = db.last_id
 
         file_type = mime.delete_prefix("image/")
-        File.open("../image/#{pid}.#{file_type}", mode="w") do |f|
-          f.write(params['file'][:tempfile].read)
-        end
+        File.binwrite("../image/#{pid}.#{file_type}", File.read(params['file'][:tempfile]))
 
         redirect "/posts/#{pid}", 302
       else
@@ -361,7 +359,6 @@ module Isuconp
     end
 
     get '/image/:id.:ext' do
-      puts "きたよーーーーーーー#{params[:id], params[:ext}"
       if params[:id].to_i == 0
         return ""
       end

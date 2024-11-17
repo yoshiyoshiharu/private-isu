@@ -235,7 +235,7 @@ module Isuconp
       comment_user_ids = comments_results.map { |comment| comment[:user_id] }
 
       all_users = db.query("SELECT * FROM `users` WHERE `id` IN (#{(post_user_ids + comment_user_ids).uniq.join(',')})")
-      users_by_id = all_users.to_a.index_by { |user| user[:id] }
+      users_by_id = all_users.map { |user| [user[:id], user] }.to_h
 
       post_id_comment_count_hash = db.prepare('SELECT `post_id`, COUNT(*) AS `count` FROM `comments` WHERE `post_id` IN (?) GROUP BY `post_id`').execute(
         post_ids

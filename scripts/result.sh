@@ -14,7 +14,7 @@ ALP_PATTERNS=(
     "^/login$"
     "^/comment$"
     "^/posts/\d+$"
-    "^/posts?.*$"
+    "^/posts\?max_created_at=.*$"
     "^/image/\d+\.(png|jpg)$"
     "^/@[^/]+$"
     "^/admin/banned$"

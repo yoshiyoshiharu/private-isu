@@ -405,6 +405,8 @@ module Isuconp
         me[:id],
         params['comment']
       )
+      # postsテーブルのcomment_countをインクリメント
+      db.prepare('UPDATE `posts` SET `comment_count` = `comment_count` + 1 WHERE `id` = ?').execute(post_id)
 
       redirect "/posts/#{post_id}", 302
     end

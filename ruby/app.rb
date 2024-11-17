@@ -348,6 +348,11 @@ module Isuconp
         )
         pid = db.last_id
 
+        file_type = mime.delete_prefix("image/")
+        File.open("../image/#{pid}.#{file_type}", mode="w") do |f|
+          f.write(params['file'][:tempfile].read)
+        end
+
         redirect "/posts/#{pid}", 302
       else
         flash[:notice] = '画像が必須です'

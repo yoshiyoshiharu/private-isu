@@ -361,6 +361,7 @@ module Isuconp
     end
 
     get '/image/:id.:ext' do
+      puts "きたよーーーーーーー#{params[:id], params[:ext}"
       if params[:id].to_i == 0
         return ""
       end

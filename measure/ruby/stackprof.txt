@@ -1,36 +1,36 @@
 ==================================
   Mode: cpu(1000)
-  Samples: 12435 (0.69% miss rate)
-  GC: 564 (4.54%)
+  Samples: 12861 (0.60% miss rate)
+  GC: 572 (4.45%)
 ==================================
      TOTAL    (pct)     SAMPLES    (pct)     FRAME
-      5894  (47.4%)        5892  (47.4%)     Time.local
-      9502  (76.4%)        3463  (27.8%)     Mysql2::Result#each
-      4251  (34.2%)         917   (7.4%)     Mysql2::Statement#_execute
-       588   (4.7%)         588   (4.7%)     Mysql2::Client#prepare
-       473   (3.8%)         473   (3.8%)     (sweeping)
-      6154  (49.5%)         116   (0.9%)     Enumerable#to_a
-      8192  (65.9%)         102   (0.8%)     Isuconp::App#make_posts
-        94   (0.8%)          94   (0.8%)     (marking)
-      4393  (35.3%)          62   (0.5%)     Thread.handle_interrupt
-        60   (0.5%)          60   (0.5%)     Mysql2::Client#_query
-        43   (0.3%)          43   (0.3%)     IO#write
-      4343  (34.9%)          29   (0.2%)     Mysql2::Statement#execute
-        26   (0.2%)          26   (0.2%)     Time#strftime
-        34   (0.3%)          24   (0.2%)     Enumerable#first
-        21   (0.2%)          21   (0.2%)     Time#localtime
-        19   (0.2%)          19   (0.2%)     File.expand_path
-        21   (0.2%)          14   (0.1%)     Isuconp::App#db
-        13   (0.1%)          13   (0.1%)     Kernel#`
-        38   (0.3%)          13   (0.1%)     Tilt::CompiledTemplates#__tilt_2620
-       245   (2.0%)          11   (0.1%)     Sinatra::Templates#render
-        26   (0.2%)          10   (0.1%)     Tilt::CompiledTemplates#__tilt_2340
-        14   (0.1%)          10   (0.1%)     Array#eql?
+      6200  (48.2%)        6197  (48.2%)     Time.local
+     10115  (78.6%)        3768  (29.3%)     Mysql2::Result#each
+      2901  (22.6%)         414   (3.2%)     Mysql2::Statement#_execute
+      9247  (71.9%)         388   (3.0%)     Isuconp::App#make_posts
+       388   (3.0%)         388   (3.0%)     (sweeping)
+       263   (2.0%)         263   (2.0%)     Mysql2::Client#prepare
+       692   (5.4%)         244   (1.9%)     Enumerable#find
+       189   (1.5%)         189   (1.5%)     (marking)
+       134   (1.0%)         134   (1.0%)     Mysql2::Client#_query
+      7633  (59.3%)         122   (0.9%)     Enumerable#to_a
+     12088  (94.0%)         118   (0.9%)     Array#each
+        45   (0.3%)          45   (0.3%)     IO#write
+        30   (0.2%)          30   (0.2%)     Time#strftime
+      3077  (23.9%)          30   (0.2%)     Thread.handle_interrupt
+        27   (0.2%)          27   (0.2%)     Time#localtime
+      2951  (22.9%)          21   (0.2%)     Mysql2::Statement#execute
+        63   (0.5%)          20   (0.2%)     Tilt::CompiledTemplates#__tilt_2600
+        19   (0.1%)          19   (0.1%)     File.expand_path
+        14   (0.1%)          14   (0.1%)     Kernel#`
+        12   (0.1%)          12   (0.1%)     String#gsub
+        13   (0.1%)          11   (0.1%)     Rack::Utils#html_escape
+        19   (0.1%)          10   (0.1%)     Isuconp::App#db
+       247   (1.9%)          10   (0.1%)     Sinatra::Templates#render
          9   (0.1%)           9   (0.1%)     File.dirname
-         8   (0.1%)           8   (0.1%)     String#gsub
-         8   (0.1%)           8   (0.1%)     IO#wait_readable
-     11663  (93.8%)           8   (0.1%)     Array#each
-         7   (0.1%)           7   (0.1%)     Rack::Utils#html_escape
-        26   (0.2%)           7   (0.1%)     Tilt::CompiledTemplates#__tilt_2560
-        27   (0.2%)           7   (0.1%)     Dalli::Socket::InstanceMethods#readfull
-         7   (0.1%)           7   (0.1%)     Marshal.dump
+        25   (0.2%)           9   (0.1%)     Tilt::CompiledTemplates#__tilt_2620
+        12   (0.1%)           7   (0.1%)     Enumerable#first
+        15   (0.1%)           6   (0.0%)     Hash#fetch
+         6   (0.0%)           6   (0.0%)     File.join
+         6   (0.0%)           6   (0.0%)     Thread.current
+       104   (0.8%)           6   (0.0%)     Tilt::CompiledTemplates#__tilt_2600

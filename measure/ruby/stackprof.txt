@@ -1,36 +1,36 @@
 ==================================
   Mode: cpu(1000)
-  Samples: 12861 (0.60% miss rate)
-  GC: 572 (4.45%)
+  Samples: 6809 (0.74% miss rate)
+  GC: 371 (5.45%)
 ==================================
      TOTAL    (pct)     SAMPLES    (pct)     FRAME
-      6200  (48.2%)        6197  (48.2%)     Time.local
-     10115  (78.6%)        3768  (29.3%)     Mysql2::Result#each
-      2901  (22.6%)         414   (3.2%)     Mysql2::Statement#_execute
-      9247  (71.9%)         388   (3.0%)     Isuconp::App#make_posts
-       388   (3.0%)         388   (3.0%)     (sweeping)
-       263   (2.0%)         263   (2.0%)     Mysql2::Client#prepare
-       692   (5.4%)         244   (1.9%)     Enumerable#find
-       189   (1.5%)         189   (1.5%)     (marking)
-       134   (1.0%)         134   (1.0%)     Mysql2::Client#_query
-      7633  (59.3%)         122   (0.9%)     Enumerable#to_a
-     12088  (94.0%)         118   (0.9%)     Array#each
-        45   (0.3%)          45   (0.3%)     IO#write
-        30   (0.2%)          30   (0.2%)     Time#strftime
-      3077  (23.9%)          30   (0.2%)     Thread.handle_interrupt
-        27   (0.2%)          27   (0.2%)     Time#localtime
-      2951  (22.9%)          21   (0.2%)     Mysql2::Statement#execute
-        63   (0.5%)          20   (0.2%)     Tilt::CompiledTemplates#__tilt_2600
-        19   (0.1%)          19   (0.1%)     File.expand_path
-        14   (0.1%)          14   (0.1%)     Kernel#`
-        12   (0.1%)          12   (0.1%)     String#gsub
-        13   (0.1%)          11   (0.1%)     Rack::Utils#html_escape
-        19   (0.1%)          10   (0.1%)     Isuconp::App#db
-       247   (1.9%)          10   (0.1%)     Sinatra::Templates#render
-         9   (0.1%)           9   (0.1%)     File.dirname
-        25   (0.2%)           9   (0.1%)     Tilt::CompiledTemplates#__tilt_2620
-        12   (0.1%)           7   (0.1%)     Enumerable#first
-        15   (0.1%)           6   (0.0%)     Hash#fetch
-         6   (0.0%)           6   (0.0%)     File.join
-         6   (0.0%)           6   (0.0%)     Thread.current
-       104   (0.8%)           6   (0.0%)     Tilt::CompiledTemplates#__tilt_2600
+      2503  (36.8%)        2500  (36.7%)     Time.local
+      3946  (58.0%)        1390  (20.4%)     Mysql2::Result#each
+      2752  (40.4%)         487   (7.2%)     Mysql2::Statement#_execute
+      3585  (52.7%)         393   (5.8%)     Isuconp::App#make_posts
+       348   (5.1%)         348   (5.1%)     Mysql2::Client#prepare
+       816  (12.0%)         339   (5.0%)     Enumerable#find
+       227   (3.3%)         227   (3.3%)     (sweeping)
+       145   (2.1%)         145   (2.1%)     (marking)
+      6215  (91.3%)         134   (2.0%)     Array#each
+        54   (0.8%)          54   (0.8%)     Mysql2::Client#_query
+        46   (0.7%)          46   (0.7%)     IO#write
+      1686  (24.8%)          45   (0.7%)     Enumerable#to_a
+      2860  (42.0%)          33   (0.5%)     Thread.handle_interrupt
+        33   (0.5%)          33   (0.5%)     Time#strftime
+      2816  (41.4%)          31   (0.5%)     Mysql2::Statement#execute
+        23   (0.3%)          23   (0.3%)     File.expand_path
+        22   (0.3%)          22   (0.3%)     Kernel#`
+       303   (4.4%)          20   (0.3%)     Sinatra::Templates#render
+        42   (0.6%)          19   (0.3%)     Tilt::CompiledTemplates#__tilt_2340
+        12   (0.2%)          12   (0.2%)     BasicSocket#__read_nonblock
+        11   (0.2%)          11   (0.2%)     Time#localtime
+        34   (0.5%)          11   (0.2%)     Dalli::Socket::InstanceMethods#readfull
+        17   (0.2%)          10   (0.1%)     Isuconp::App#db
+        51   (0.7%)           8   (0.1%)     Sinatra::Templates#compile_template
+         7   (0.1%)           7   (0.1%)     File.dirname
+        20   (0.3%)           7   (0.1%)     Thread::Mutex#synchronize
+        19   (0.3%)           7   (0.1%)     Tilt::CompiledTemplates#__tilt_2580
+         7   (0.1%)           7   (0.1%)     IO#wait_readable
+        27   (0.4%)           7   (0.1%)     Tilt::CompiledTemplates#__tilt_2600
+        19   (0.3%)           7   (0.1%)     Tilt::BaseMapping#split

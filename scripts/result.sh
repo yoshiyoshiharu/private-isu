@@ -1,5 +1,6 @@
 #!/bin/sh
 
+set -ex
 # [TODO: 最初に設定] 環境変数
 APP_HOME=~/private_isu/webapp
 

@@ -1,6 +1,6 @@
 #!/bin/bash
 
-set -e
+set -ex
 
 # ローカルで修正してからscpする
 # scp -r ./scripts  isucon@3.113.6.158:~/private_isu/webapp/
@@ -127,7 +127,6 @@ cat <<EOF > ~/.bashrc
   alias g='git'
 EOF
 echo "bashrcの設定を追加しました"
-
 
 # authorized_keysにgithubに登録しているssh公開鍵を登録する
 USERS=("yoshiyoshiharu" "KoyamaShimpei" "taiwork")

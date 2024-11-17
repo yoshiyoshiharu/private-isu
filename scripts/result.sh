@@ -11,19 +11,17 @@ ALPSORT=sum
 
 # [TODO: API見ながら設定] パスパターンを配列として定義
 ALP_PATTERNS=(
-    "/api/user/.+/icon"
-    "/api/user/.+/theme"
-    "/api/user/.+/statistics"
-    "/api/livestream/.+/statistics"
-    "/api/livestream/\\d+/livecomment"
-    "/api/livestream/\\d+/moderate"
-    "/api/livestream/\\d+/ngwords"
-    "/api/livestream/\\d+/exit"
-    "/api/livestream/\\d+/enter"
-    "/api/livestream/\\d+/livecomment/\\d+/report"
-    "/api/livestream/\\d+/report"
-    "/api/livestream/\\d+/reaction"
-    "/api/livestream/search\?tag=.*"
+    "^/login$"
+    "^/comment$"
+    "^/posts/\d+$"
+    "^/posts\?max_created_at=.*$"
+    "^/image/\d+\.(png|jpg)$"
+    "^/@[^/]+$"
+    "^/admin/banned$"
+    "^/js/main\.js$"
+    "^/js/timeago\.min\.js$"
+    "^/favicon\.ico$"
+    "^/$"
 )
 
 # 配列をカンマ区切りで連結してALPMに代入

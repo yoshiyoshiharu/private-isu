@@ -365,6 +365,8 @@ module Isuconp
 
       post = db.prepare('SELECT * FROM `posts` WHERE `id` = ?').execute(params[:id].to_i).first
 
+      File.binwite("../image/#{params[:id]}.#{params[:ext]}", post[:imgdata])
+
       if (params[:ext] == "jpg" && post[:mime] == "image/jpeg") ||
           (params[:ext] == "png" && post[:mime] == "image/png") ||
           (params[:ext] == "gif" && post[:mime] == "image/gif")

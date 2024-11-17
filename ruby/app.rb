@@ -234,10 +234,6 @@ module Isuconp
       posts = []
       all_users = db.query('SELECT * FROM `users`').to_a
       results.to_a.each do |post|
-        post[:comment_count] = db.prepare('SELECT COUNT(*) AS `count` FROM `comments` WHERE `post_id` = ?').execute(
-          post[:id]
-        ).first[:count]
-
         comments = comments_per_post[post[:id]] || []
         comments.each do |comment|
           comment[:user] = all_users.find { |user| user[:id] == comment[:user_id] }
@@ -405,6 +401,8 @@ module Isuconp
         me[:id],
         params['comment']
       )
+      # postsテーブルのcomment_countをインクリメント
+      db.prepare('UPDATE `posts` SET `comment_count` = `comment_count` + 1 WHERE `id` = ?').execute(post_id)
 
       redirect "/posts/#{post_id}", 302
     end

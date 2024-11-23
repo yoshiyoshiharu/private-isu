@@ -103,7 +103,7 @@ module Isuconp
       def make_posts(results, all_comments: false)
         posts = []
         results.to_a.each do |post|
-          query = 'SELECT c.id, c.post_id, c.user_id, c.comment, c.created_at, u.id, u.account_name, u.passhash, u.authority, u.del_flg, u.created_at FROM `comments` as c LEFT JOIN `users` as u ON `comments`.user_id = `users`.id WHERE `comments`.post_id = ? ORDER BY `comments`.created_at DESC'
+          query = 'SELECT c.id, c.post_id, c.user_id, c.comment, c.created_at, u.id, u.account_name, u.passhash, u.authority, u.del_flg, u.created_at FROM `comments` as c LEFT JOIN `users` as u ON c.user_id = u.id WHERE c.post_id = 1 ORDER BY c.created_at DESC'
           unless all_comments
             query += ' LIMIT 3'
           end

@@ -120,6 +120,7 @@ module Isuconp
           comments.each do |comment|
             comment[:user] = users.find{|user| user[:id] == comment[:user_id]}
           end
+          pp comments
 
           post[:comments] = comments.reverse
 

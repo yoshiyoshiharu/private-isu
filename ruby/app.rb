@@ -112,7 +112,7 @@ module Isuconp
             post[:id]
           ).to_a
 
-          if comments.present?
+          unless comments.empty?
             comment_ids = comments.map{|comment| comment[:user_id]}.join(",")
             puts "-----------comment_ids----------"
             pp comment_ids

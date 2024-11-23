@@ -129,6 +129,8 @@ module Isuconp
             pp comments
 
             post[:comments] = comments.reverse
+          else
+            post[:comments] = []
           end
 
           post[:user] = {

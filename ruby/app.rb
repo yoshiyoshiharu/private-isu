@@ -115,14 +115,15 @@ module Isuconp
               comment[:user_id]
             ).first
           end
+
           post[:comments] = comments.reverse
 
-          post[:user] = db.prepare('SELECT * FROM `users` WHERE `id` = ?').execute(
-            post[:user_id]
-          ).first
+          post[:user] = {
+            id: post[:user_id],
+            account_name: post[:account_name]
+          }
 
-          posts.push(post) if post[:user][:del_flg] == 0
-          break if posts.length >= POSTS_PER_PAGE
+          posts.push(post)
         end
 
         posts
@@ -231,35 +232,7 @@ module Isuconp
         LIMIT 20
         ")
 
-      posts = []
-      post_hashes = results.to_a.map do |post|
-        {
-          id: post[:id],
-          user_id: post[:user_id],
-          body: post[:body],
-          created_at: post[:created_at],
-          mime: post[:mime],
-          user: {
-            id: post[:user_id],
-            account_name: post[:account_name]
-          }
-        }
-      end
-
-      post_hashes.each do |post|
-        query = 'SELECT * FROM `comments` WHERE `post_id` = ? ORDER BY `created_at` DESC LIMIT 3'
-        comments = db.prepare(query).execute(
-          post[:id]
-        ).to_a
-        comments.each do |comment|
-          comment[:user] = db.prepare('SELECT * FROM `users` WHERE `id` = ?').execute(
-            comment[:user_id]
-          ).first
-        end
-        post[:comments] = comments.reverse
-
-        posts.push(post)
-      end
+      posts = make_posts(results)
 
       erb :index, layout: :layout, locals: { posts: posts, me: me }
     end

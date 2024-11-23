@@ -103,15 +103,35 @@ module Isuconp
       def make_posts(results, all_comments: false)
         posts = []
         results.to_a.each do |post|
-          query = 'SELECT c.id, c.post_id, c.user_id, c.comment, c.created_at, u.id, u.account_name, u.passhash, u.authority, u.del_flg, u.created_at FROM `comments` as c LEFT JOIN `users` as u ON c.user_id = u.id WHERE c.post_id = ? ORDER BY c.created_at DESC'
+          query = 'SELECT c.id, c.post_id, c.user_id, c.comment, c.created_at, u.account_name, u.passhash, u.authority, u.del_flg, u.created_at FROM `comments` as c LEFT JOIN `users` as u ON c.user_id = u.id WHERE c.post_id = ? ORDER BY c.created_at DESC'
           unless all_comments
             query += ' LIMIT 3'
           end
           comments = db.prepare(query).execute(
             post[:id]
           ).to_a
+
           puts "---------------------"
-          pp comments 
+          pp comments
+
+          comment_hashes = comments.map do |comment|
+            {
+              id: comment[:id],
+              post_id: comment[:post_id],
+              user_id: comment[:user_id],
+              comment: comment[:comment],
+              created_at: comment[:created_at],
+              user: {
+                id: comment[:user_id],
+                account_name: comment[:account_name],
+                authority: comment[:authority],
+                del_flg: comment[:del_flg],
+                created_at: comment[:created_at]
+              }
+            }
+          end
+          pp comment_hashes
+
           post[:comments] = comments.reverse
 
           post[:user] = db.prepare('SELECT * FROM `users` WHERE `id` = ?').execute(

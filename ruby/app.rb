@@ -110,6 +110,8 @@ module Isuconp
           comments = db.prepare(query).execute(
             post[:id]
           ).to_a
+          puts "---------------------"
+          pp comments 
           post[:comments] = comments.reverse
 
           post[:user] = db.prepare('SELECT * FROM `users` WHERE `id` = ?').execute(

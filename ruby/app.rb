@@ -116,9 +116,7 @@ module Isuconp
           puts "-----------comment_ids----------"
           pp comment_ids
 
-          users = db.prepare('SELECT * FROM `users` WHERE `id` IN (?)').execute(
-            comment_ids
-          ).to_a
+          users = db.prepare("SELECT * FROM `users` WHERE `id` IN (#{comment_ids})").execute.to_a
 
           puts "-----------users----------"
           pp users

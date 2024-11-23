@@ -102,7 +102,7 @@ module Isuconp
 
       def make_posts(results, all_comments: false)
         posts = []
-        all_users = db.query('SELECT * FROM `users`').to_a
+        all_users_by_id = db.query('SELECT * FROM `users`').to_a.each_with_object({}) { |user, hash| hash[user[:id]] = user }
         results.to_a.each do |post|
           query = 'SELECT * FROM `comments` WHERE `post_id` = ? ORDER BY `created_at` DESC'
           unless all_comments
@@ -112,11 +112,11 @@ module Isuconp
             post[:id]
           ).to_a
           comments.each do |comment|
-            comment[:user] = all_users.find { |user| user[:id] == comment[:user_id] }
+            comment[:user] = all_users_by_id[comment[:user_id]]
           end
           post[:comments] = comments.reverse
 
-          post[:user] = all_users.find { |user| user[:id] == post[:user_id] }
+          post[:user] = all_users_by_id[post[:user_id]]
 
           posts.push(post) if post[:user][:del_flg] == 0
           break if posts.length >= POSTS_PER_PAGE

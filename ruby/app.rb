@@ -112,9 +112,14 @@ module Isuconp
             post[:id]
           ).to_a
 
+          comment_ids = comments.map{|comment| comment[:user_id]}.join(",")
+          puts "-----------comment_ids----------"
+          pp comment_ids
+
           users = db.prepare('SELECT * FROM `users` WHERE `id` IN (?)').execute(
-            comments.map{|comment| comment[:user_id]}.join(",")
+            comment_ids
           ).to_a
+
           puts "-----------users----------"
           pp users
 

@@ -114,19 +114,12 @@ module Isuconp
 
           unless comments.empty?
             comment_ids = comments.map{|comment| comment[:user_id]}.join(",")
-            puts "-----------comment_ids----------"
-            pp comment_ids
 
             users = db.prepare("SELECT * FROM `users` WHERE `id` IN (#{comment_ids})").execute.to_a
-
-            puts "-----------users----------"
-            pp users
 
             comments.each do |comment|
               comment[:user] = users.find{|user| user[:id] == comment[:user_id]}
             end
-            puts "-----------comments----------"
-            pp comments
 
             post[:comments] = comments.reverse
           else

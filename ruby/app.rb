@@ -125,6 +125,7 @@ module Isuconp
                 id: comment[:user_id],
                 account_name: comment[:account_name],
                 authority: comment[:authority],
+                passhash: comment[:passhash],
                 del_flg: comment[:del_flg],
                 created_at: comment[:created_at]
               }
@@ -132,7 +133,7 @@ module Isuconp
           end
           pp comment_hashes
 
-          post[:comments] = comments.reverse
+          post[:comments] = comment_hashes.reverse
 
           post[:user] = db.prepare('SELECT * FROM `users` WHERE `id` = ?').execute(
             post[:user_id]

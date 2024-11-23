@@ -1,36 +1,36 @@
 ==================================
   Mode: cpu(1000)
-  Samples: 6219 (0.91% miss rate)
-  GC: 552 (8.88%)
+  Samples: 3511 (0.23% miss rate)
+  GC: 181 (5.16%)
 ==================================
      TOTAL    (pct)     SAMPLES    (pct)     FRAME
-      2059  (33.1%)        2049  (32.9%)     Time.local
-      3481  (56.0%)        1358  (21.8%)     Mysql2::Result#each
-       298   (4.8%)         298   (4.8%)     (sweeping)
-       262   (4.2%)         262   (4.2%)     block (3 levels) in <class:App>
-       258   (4.1%)         258   (4.1%)     (marking)
-       534   (8.6%)         183   (2.9%)     Enumerable#find
-       191   (3.1%)         115   (1.8%)     Mysql2::Statement#_execute
-      5313  (85.4%)         109   (1.8%)     Array#each
-      1943  (31.2%)          92   (1.5%)     Isuconp::App#make_posts
-        86   (1.4%)          86   (1.4%)     Mysql2::Client#prepare
-        84   (1.4%)          83   (1.3%)     Mysql2::Client#_query
-        68   (1.1%)          68   (1.1%)     IO#write
-        64   (1.0%)          64   (1.0%)     Time#strftime
-      3400  (54.7%)          56   (0.9%)     Enumerable#to_a
-        44   (0.7%)          44   (0.7%)     File.expand_path
-        36   (0.6%)          36   (0.6%)     Kernel#`
-       621  (10.0%)          28   (0.5%)     Sinatra::Templates#render
-        28   (0.5%)          28   (0.5%)     File.dirname
-        30   (0.5%)          21   (0.3%)     Array#eql?
-        19   (0.3%)          19   (0.3%)     String#gsub
-        53   (0.9%)          19   (0.3%)     Hash#fetch
-        66   (1.1%)          18   (0.3%)     Dalli::Socket::InstanceMethods#readfull
-        18   (0.3%)          18   (0.3%)     IO#wait_readable
-        18   (0.3%)          18   (0.3%)     Symbol#to_s
-        18   (0.3%)          18   (0.3%)     Rack::Utils#html_escape
-        67   (1.1%)          15   (0.2%)     Tilt::CompiledTemplates#__tilt_2340
-       550   (8.8%)          14   (0.2%)     block (2 levels) in <class:App>
-        38   (0.6%)          14   (0.2%)     Tilt::CompiledTemplates#__tilt_2600
-       533   (8.6%)          13   (0.2%)     UnboundMethod#bind_call
-       104   (1.7%)          13   (0.2%)     Enumerable#each_with_object
+      1357  (38.6%)         955  (27.2%)     Mysql2::Statement#_execute
+       647  (18.4%)         647  (18.4%)     Mysql2::Client#prepare
+       435  (12.4%)         242   (6.9%)     Mysql2::Result#each
+       183   (5.2%)         182   (5.2%)     Time.local
+       146   (4.2%)         146   (4.2%)     (sweeping)
+      2204  (62.8%)          82   (2.3%)     Isuconp::App#make_posts
+      1467  (41.8%)          74   (2.1%)     Thread.handle_interrupt
+        64   (1.8%)          64   (1.8%)     IO#write
+       100   (2.8%)          41   (1.2%)     Tilt::CompiledTemplates#__tilt_2340
+      1470  (41.9%)          40   (1.1%)     Mysql2::Statement#execute
+        36   (1.0%)          36   (1.0%)     Time#strftime
+        35   (1.0%)          35   (1.0%)     (marking)
+        29   (0.8%)          29   (0.8%)     File.expand_path
+       530  (15.1%)          27   (0.8%)     Sinatra::Templates#render
+        22   (0.6%)          22   (0.6%)     File.dirname
+        22   (0.6%)          22   (0.6%)     Rack::Utils#html_escape
+        19   (0.5%)          19   (0.5%)     String#gsub
+        19   (0.5%)          19   (0.5%)     File.join
+        16   (0.5%)          16   (0.5%)     Kernel#`
+        84   (2.4%)          14   (0.4%)     Sinatra::Templates#compile_template
+        40   (1.1%)          14   (0.4%)     Hash#fetch
+        14   (0.4%)          14   (0.4%)     BasicSocket#__read_nonblock
+        57   (1.6%)          14   (0.4%)     Dalli::Socket::InstanceMethods#readfull
+        14   (0.4%)          14   (0.4%)     String#unpack
+        35   (1.0%)          13   (0.4%)     Tilt::CompiledTemplates#__tilt_2400
+       451  (12.8%)          13   (0.4%)     UnboundMethod#bind_call
+        13   (0.4%)          13   (0.4%)     IO#wait_readable
+        13   (0.4%)          13   (0.4%)     Mysql2::Client#_query
+        17   (0.5%)          12   (0.3%)     Array#hash
+        33   (0.9%)          12   (0.3%)     Enumerable#to_a

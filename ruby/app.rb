@@ -247,10 +247,7 @@ module Isuconp
       end
 
       post_hashes.each do |post|
-        query = 'SELECT * FROM `comments` WHERE `post_id` = ? ORDER BY `created_at` DESC'
-        unless all_comments
-          query += ' LIMIT 3'
-        end
+        query = 'SELECT * FROM `comments` WHERE `post_id` = ? ORDER BY `created_at` DESC LIMIT 3'
         comments = db.prepare(query).execute(
           post[:id]
         ).to_a

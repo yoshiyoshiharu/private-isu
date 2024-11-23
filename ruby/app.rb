@@ -107,16 +107,24 @@ module Isuconp
           unless all_comments
             query += ' LIMIT 3'
           end
+
           comments = db.prepare(query).execute(
             post[:id]
           ).to_a
-          comments.each do |comment|
-            comment[:user] = db.prepare('SELECT * FROM `users` WHERE `id` = ?').execute(
-              comment[:user_id]
-            ).first
-          end
 
-          post[:comments] = comments.reverse
+          unless comments.empty?
+            comment_ids = comments.map{|comment| comment[:user_id]}.join(",")
+
+            users = db.prepare("SELECT * FROM `users` WHERE `id` IN (#{comment_ids})").execute.to_a
+
+            comments.each do |comment|
+              comment[:user] = users.find{|user| user[:id] == comment[:user_id]}
+            end
+
+            post[:comments] = comments.reverse
+          else
+            post[:comments] = []
+          end
 
           post[:user] = {
             id: post[:user_id],

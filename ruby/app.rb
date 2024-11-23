@@ -223,7 +223,7 @@ module Isuconp
       me = get_session_user()
 
       results = db.query("
-        SELECT p.`id`, p,`user_id`, p.`body`, p.`created_at`, p.`mime`, u.`account_name`
+        SELECT p.`id`, p.`user_id`, p.`body`, p.`created_at`, p.`mime`, u.`account_name`
         FROM `posts` as p
         INNER JOIN `users` as u ON p.user_id = u.id
         WHERE u.`del_flg` = 0
